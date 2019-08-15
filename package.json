@@ -1,0 +1,20 @@
+{
+  "name": "webchat",
+  "version": "1.0.0",
+  "description": "Web Chatroom using websocket",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "scss": "node-sass --watch scss -o public/css"
+  },
+  "author": "Nattapong Siribal",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.0",
+    "node-static": "^0.7.11",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}

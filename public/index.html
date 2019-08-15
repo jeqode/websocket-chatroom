@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Webchat</title>
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/socket.io.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="group list">
+			<ul>						
+				<li class="item"><div>CS</div></li>
+			</ul>
+		</div>
+		<div class="user list">
+			<h3 class="room name">Chatroom</h3>
+			<ul id="userlist">
+				<li class="item">Michael Yang</li>
+				<li class="item">Cameron Mitchell</li>
+				<li class="item">Rihan M.</li>
+			</ul>
+		</div>
+		<div class="title bar">
+			<h1 class="header">Websocket Chatroom</h1>
+			<div class="setting">
+				<i class="setting icon"></i>
+			</div>
+		</div>
+		<div class="chat history">
+			<ul class="chat list" id="logs">
+				<li class="chat item">
+					<div class="header">
+						<div class="avatar"><img src="img/02.png" alt="Michael Yang"></div>
+						<h5 class="name">Michael Yang</h5>
+						<span class="timestamp">09:32 AM | 17/02/2019</span>
+					</div>
+					<div class="body">
+							Hello guys. any update?
+					</div>
+				</li>
+				<li class="chat item">
+					<div class="header">
+						<div class="avatar"><img src="img/01.png" alt="Cameron Mitchell"></div>
+						<h5 class="name">Cameron Mitchell</h5>
+						<span class="timestamp">04:32 PM | 17/02/2019</span>
+					</div>
+					<div class="body">
+							I’m keeping up with the customer<br>
+							trying to appoint a meeting this weekend<br>
+							hope the customer like the idea<br>
+					</div>
+				</li>
+				<template id="chat_item">
+					<li class="chat item">
+						<div class="header">
+							<div class="avatar"><img src="img/01.png" alt="username"></div>
+							<h5 class="name">username</h5>
+							<span class="timestamp">time | date</span>
+						</div>
+						<div class="body">
+								message
+						</div>
+					</li>
+				</template>
+			</ul>
+		</div>
+		<div class="chat enter">
+			<div class="field">
+				<div class="typing">
+					<input type="text" id="message">
+				</div>
+				<div class="send button" id="send">Send</div>
+			</div>
+		</div>
+	</div>
+	<div class="overlay">
+		<div class="prompt">
+			<div class="avatar list">
+				<div data-no="01" class="avatar selected"><img src="img/01.png" alt=""></div>
+				<div data-no="02" class="avatar"><img src="img/02.png" alt=""></div>
+				<div data-no="03" class="avatar"><img src="img/03.png" alt=""></div>
+				<div data-no="04" class="avatar"><img src="img/04.png" alt=""></div>
+				<div data-no="05" class="avatar"><img src="img/05.png" alt=""></div>
+				<div data-no="06" class="avatar"><img src="img/06.png" alt=""></div>
+				<div data-no="07" class="avatar"><img src="img/07.png" alt=""></div>
+			</div>
+			<div class="field">
+				<div class="logo"></div>
+				<input id="username" type="text" placeholder="Username">
+				<div class="ok button">Ok</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script src="js/chat.js"></script>
+</html>
