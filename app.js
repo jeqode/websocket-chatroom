@@ -1,10 +1,13 @@
 const express = require('express');
 const app = express();
 const port = 5500;
+
+//index dir to display
 app.use(express.static('public'));
 const server = app.listen(port, ()=>{
 	console.log('Listening on localhost:'+port);
 });
+
 const socket = require("socket.io");
 const io = socket(server);
 const now = new Date();
@@ -14,7 +17,8 @@ var online_users = {
 };
 
 io.on('connection', function(socket){
-	console.log(socket.id);
+	
+	//handle when new user login, +1 user number, add user to online_users list
 	socket.on('login', (data)=>{
 		user = {
 			id : socket.id,
@@ -27,13 +31,16 @@ io.on('connection', function(socket){
 			online_users.n += 1;
 			online_users.users.push(user);
 		}
-		console.log(online_users);
 		io.emit('newuser', online_users);
 	});
+
+	//add time stamp to message then pass to all users
 	socket.on('chat', (data)=>{
 		data.time = now.getTime();
 		io.sockets.emit('chat', data);
 	});
+
+	//remove user from online_users list, -1 user number
 	socket.on('disconnect', ()=>{
 		let user = online_users.users.find((user)=>{return user.id == socket.id;});
 		if(user != undefined){
